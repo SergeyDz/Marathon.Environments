@@ -1,0 +1,23 @@
+{
+  "id": "elk",
+  "cpus": 0.2,
+  "mem": 300.0,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "sergeydz/elk",
+      "forcePullImage": true,	
+      "network": "BRIDGE",
+      "portMappings": [
+       	{ "containerPort": 5601, "hostPort": 0, "servicePort": 0, "protocol": "tcp" } 
+      ], 
+	"parameters": [
+        {"key":"publish", "value": "5000:5000"}	
+      ]
+    }
+  },
+ "healthChecks": [
+    { "protocol": "HTTP", "path": "/", "portIndex": 0 }
+  ]
+}
