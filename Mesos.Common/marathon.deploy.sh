@@ -1,1 +1,1 @@
-curl -X POST http://192.168.33.10:8080/v2/apps -d @$1 -H "Content-type: application/json"
+curl -X POST http://10.1.0.178:8080/v2/apps -d @$1 -H "Content-type: application/json"
