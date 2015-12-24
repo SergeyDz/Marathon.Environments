@@ -1,0 +1,17 @@
+{
+  "id": "hellodocker",
+  "cpus": 0.2,
+  "mem": 50.0,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "sergeydz/helloworld",
+      "forcePullImage": true,	
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 8090, "hostPort": 0, "servicePort": 0, "protocol": "tcp" }
+      ]
+    }
+  }
+}

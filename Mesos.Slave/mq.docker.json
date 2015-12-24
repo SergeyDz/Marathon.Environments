@@ -1,0 +1,19 @@
+{
+  "id": "mq",
+  "cpus": 0.2,
+  "mem": 300.0,
+  "instances": 1,
+  "constraints": [["hostname", "UNIQUE", ""]],
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "rabbitmq:3-management",
+      "forcePullImage": true,
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 5672, "hostPort": 0, "servicePort": 0, "protocol": "tcp" } ,
+	{ "containerPort": 15672, "hostPort": 0, "servicePort": 0, "protocol": "tcp" }
+      ]
+    }
+  }
+}
