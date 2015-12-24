@@ -1,5 +1,5 @@
 rpm -Uvh http://repos.mesosphere.com/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm
-yum -y install mesos device-mapper-event-libs docker
+yum -y install mesos device-mapper-event-libs docker python
                                       
 cp /vagrant/host.conf /etc/hosts
 
@@ -18,7 +18,7 @@ chkconfig mesos-master off
 
 chkconfig docker on
 service docker start
-docker load --input=/vagrant/mq.tar.gz
+#docker load --input=/vagrant/mq.tar.gz
 
 #service Networkmanager stop
 #chkconfig NetworkManager off 
