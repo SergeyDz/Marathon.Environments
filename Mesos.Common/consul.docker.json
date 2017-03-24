@@ -1,0 +1,21 @@
+{
+  "id": "marathon-consul",
+  "args": ["--marathon-username=vagrant","--marathon-password=vagrant", "--marathon-location=10.1.1.231:8080"],
+  "cpus": 0.1,
+  "mem": 128.0,
+  "instances": 1,
+  "ports": [4000, 8500],
+  "constraints": [["hostname", "LIKE", "sdzyuban-mesos-hp"]],
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "sergeydz/marathon-consul",
+      "forcePullImage": true,	
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 4000, "hostPort": 0, "servicePort": 0, "protocol": "tcp" },
+        { "containerPort": 8500, "hostPort": 0, "servicePort": 0, "protocol": "tcp" }
+      ]
+    }
+  }
+}

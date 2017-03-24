@@ -1,0 +1,50 @@
+{
+    "id": "/bamboo/master",
+    "instances": 1,
+    "cpus": 1,
+    "mem": 512,
+    "constraints": [
+        [
+            "hostname",
+            "LIKE",
+            "sdzyuban-mesos-01"
+        ]
+    ],
+    "container": {
+        "type": "DOCKER",
+        "docker": {
+            "image": "mrbobbytables/bamboo",
+            "network": "BRIDGE",
+            "parameters": [
+                {
+                    "key": "cap-add",
+                    "value": "NET_ADMIN"
+                }
+            ]
+        }
+    },
+    "env": {
+        "ENVIRONMENT": "production",
+        "ENVIRONMENT_INIT": "/opt/scripts/delete-iptb-rules.sh",
+        "APP_NAME": "bamboo",
+        "PARENT_HOST": "sdzyuban-mesos-01",
+        "BAMBOO_BIND_ADDRESS": "10.1.1.231:8000",
+        "BAMBOO_ENDPOINT": "http://10.1.1.231:8000",
+        "BAMBOO_ZK_HOST": "10.1.1.231:2181,10.1.1.232:2181,10.1.1.233:2181",
+        "BAMBOO_ZK_PATH": "/marathon-haproxy/state",
+        "MARATHON_ENDPOINT": "http://10.1.1.231:8080,http://10.1.1.232:8080,http://10.1.1.233:8080",
+        "HAPROXY_TEMPLATE_PATH": "/opt/bamboo/config/haproxy.tmplt",
+        "HAPROXY_OUTPUT_PATH": "/etc/haproxy/haproxy.cfg",
+        "HAPROXY_RELOAD_CMD": "iptables -D INPUT -p tcp -m multiport --dports 80,443 --syn -j DROP; iptables -I INPUT -p tcp -m multiport --dports 80,443 --syn -j DROP; sleep 0.2; supervisorctl restart haproxy; iptables -D INPUT -p tcp -m multiport --dports 80,443 --syn -j DROP; done",
+        "STATSD_ENABLED": "false",
+        "KEEPALIVED_STATE": "MASTER",
+        "KEEPALIVED_INTERFACE": "eth0",
+        "KEEPALIVED_VIRTUAL_ROUTER_ID": "1",
+        "KEEPALIVED_VRRP_UNICAST_BIND": "10.1.1.231",
+        "KEEPALIVED_VRRP_UNICAST_PEER": "10.1.1.232",
+        "KEEPALIVED_TRACK_INTERFACE_1": "eth0",
+        "KEEPALIVED_TRACK_INTERFACE_2": "eth1",
+        "KEEPALIVED_VIRTUAL_IPADDRESS_1": "10.10.1.2/24 dev eth0",
+        "KEEPALIVED_VIRTUAL_IPADDRESS_EXCLUDED_1": "172.16.1.10/24 dev eth1"
+    }
+}

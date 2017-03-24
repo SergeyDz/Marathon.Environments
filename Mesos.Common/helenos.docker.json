@@ -1,0 +1,17 @@
+{
+  "id": "helenos",
+  "cpus": 0.5,
+  "mem": 500.0,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "emdem/helenos",
+      "forcePullImage": true,
+      "network": "BRIDGE",
+      "portMappings": [
+       	{ "containerPort": 8080, "hostPort": 0, "servicePort": 0, "protocol": "tcp" } 
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "sqs.consumer",
+  "cpus": 0.2,
+  "mem": 200.0,
+  "instances": 1,
+  "args": ["AKIAIH6TRRV6BN75WHCQ", "66qmCLkz6f6Xob8pxcQY+f8YcABp9zbKgSloQiOv", "us-east-1", "sergeyd-icld-539"],
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "sergeydz/sd.sqs",
+      "forcePullImage": true,
+      "network": "BRIDGE"
+    }
+  }
+}

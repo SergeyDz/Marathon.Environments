@@ -1,0 +1,23 @@
+{
+  "id": "chronos",
+  "cpus": 0.5,
+  "mem": 300.0,
+  "instances": 1,
+   "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "mesosphere/chronos",
+      "forcePullImage": true,
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 4400, "hostPort": 0, "servicePort": 0, "protocol": "tcp" },
+        { "containerPort": 8081, "hostPort": 0, "servicePort": 0, "protocol": "tcp" } 
+      ]
+    }
+  },
+  "args": ["--zk_hosts","10.1.1.231:2181,10.1.1.232:2181,10.1.1.233:2181", "--master","zk://10.1.1.231:2181,10.1.1.232:2181,10.1.1.233:2181/mesos"],
+  "env": {
+    "ZK_HOSTS": "10.1.1.231:2181,10.1.1.232:2181,10.1.1.233:2181"
+  }
+}
+

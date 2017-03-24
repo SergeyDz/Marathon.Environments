@@ -1,8 +1,9 @@
 {
   "id": "elk",
   "cpus": 0.2,
-  "mem": 300.0,
+  "mem": 800.0,
   "instances": 1,
+  "constraints": [["hostname", "LIKE", "sdzyuban-mesos-02"]],
   "container": {
     "type": "DOCKER",
     "docker": {
@@ -11,9 +12,12 @@
       "network": "BRIDGE",
       "portMappings": [
        	{ "containerPort": 5601, "hostPort": 0, "servicePort": 0, "protocol": "tcp" } 
-      ], 
-	"parameters": [
-        {"key":"publish", "value": "5000:5000"}	
+      ],  
+      "parameters": [
+        {"key": "publish", "value": "5000:5000"},
+        {"key": "publish", "value": "5601:5601"},
+        {"key": "publish", "value": "9200:9200"},
+        {"key": "publish", "value": "9300:9300"}
       ]
     }
   },

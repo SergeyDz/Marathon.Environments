@@ -1,0 +1,17 @@
+{
+  "id": "rabbit.consumer.ib.rest",
+  "cpus": 0.2,
+  "mem": 800.0,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "sergeydz/sd.nodejs.rabbitmq.ib",
+      "forcePullImage": true,	
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 9000, "hostPort": 0, "servicePort": 0, "protocol": "tcp" }
+      ]
+    }
+  }
+}

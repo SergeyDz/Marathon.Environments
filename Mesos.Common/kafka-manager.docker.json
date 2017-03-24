@@ -1,0 +1,20 @@
+{
+  "id": "kafka-mananger",
+  "cpus": 2,
+  "mem": 800.0,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "sheepkiller/kafka-manager",
+      "forcePullImage": true,	
+      "network": "BRIDGE",
+      "portMappings": [
+       	{ "containerPort": 9000, "hostPort": 0, "servicePort": 0, "protocol": "tcp" } 
+      ]
+    }
+  },
+  "env": {
+    "ZK_HOSTS": "10.1.1.231:2181,10.1.1.232:2181,10.1.1.233:2181/kafka"
+  }
+}

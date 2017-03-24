@@ -1,0 +1,28 @@
+{
+    "id": "slacktojirabot",
+    "instances": 1,
+    "cpus": 1,
+    "mem": 256,
+    "constraints": [
+        [
+            "hostname",
+            "LIKE",
+            "sdzyuban-mesos-01"
+        ]
+    ],
+    "container": {
+        "type": "DOCKER",
+        "docker": {
+            "image": "sergeydz/slacktojirabot",
+            "forcePullImage": true,
+            "network": "BRIDGE"
+        }
+    },
+    "env": {
+        "slackkey": "H",
+        "jirauser": "s",
+        "jirapassword": "",
+        "githubkey": "",
+        "slackchannels": "jets-private,uateamleads"
+    }
+}

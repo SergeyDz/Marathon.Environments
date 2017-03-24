@@ -1,0 +1,1 @@
+cp /vagrant/host.conf /etc/hosts

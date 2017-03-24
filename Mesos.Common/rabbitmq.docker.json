@@ -1,0 +1,19 @@
+{
+  "id": "rabbit.mq",
+  "cpus": 0.2,
+  "mem": 300.0,
+  "instances": 1,
+  "constraints": [["hostname", "LIKE", "sdzyuban-mesos-01"]],
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "rabbitmq:3-management",
+      "forcePullImage": true,
+      "network": "BRIDGE",
+      "parameters": [
+        {"key":"publish", "value": "5672:5672"},
+	{"key": "publish", "value": "15672:15672"}
+      ]        
+    }
+  }
+}
